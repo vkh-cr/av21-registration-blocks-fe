@@ -9,7 +9,7 @@ import csvtojson from "csvtojson";
 import Container from "react-bootstrap/Container";
 
 import { Tabs, Tab, Navbar } from "react-bootstrap";
-import Program from "./components";
+import Program from "./components/Program";
 import { Alert } from "react-bootstrap";
 
 function App() {
@@ -46,7 +46,7 @@ function App() {
     <div>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand>
+          <Navbar.Brand >
             <img
               alt="logo"
               src="/logo.svg"
@@ -54,21 +54,21 @@ function App() {
               height="30"
               className="d-inline-block align-top"
             />{" "}
-            AV21 - Registrace
+            <span style={styles.title}>AV21 - Registrace</span>
           </Navbar.Brand>
         </Container>
       </Navbar>
       <Alert variant="info">
-        Neprosíme o dodržování daných kapacit a nezkoušení "Ještě se tam vlezu".
-        Např. kapacity workshopů si nastavili sami hosté. Děkujeme za pochopení!
+        Prosíme tě o dodržení maximální kapacity – přeplněné přednášky či workshopy nejsou příjemné ani účastníkům, ani hostům. 
       </Alert>
 
       <Tabs
         defaultActiveKey={setActiveDay()}
         id="uncontrolled-tab-example"
         className="mb-3"
+        style={styles.tabHeader}
       >
-        <Tab eventKey="patek" title="Pátek">
+        <Tab eventKey="patek" title="Pátek" >
           <Program
             blockEvents={data.filter((event) => event.dayType === "1")}
           />
@@ -89,3 +89,13 @@ function App() {
 }
 
 export default App;
+
+
+const styles = {
+  tabHeader: {
+    fontFamily: 'Hammersmith One, sans-serif',
+  },
+  title: {
+    fontFamily: 'Russo One, sans-serif',
+  }
+}

@@ -4,9 +4,10 @@ import { Button, Col, ProgressBar, Row, Card, Badge } from "react-bootstrap";
 function BlockEvent({ event, key }) {
   const showFooter = (taken, capacity, isRegistration) => {
     if (isRegistration === "") {
+      const text = event.description === "" ? "Registrace není potřeba" : event.description
       return (
         <>
-          <Col>Registrace není potřeba</Col>
+          <Col>{text}</Col>
         </>
       );
     }
@@ -66,20 +67,20 @@ function BlockEvent({ event, key }) {
     switch (section) {
       case "Volnočasovky":
         return (
-          <Badge style={{ ...styles.badge, background: "green" }}>
+          <Badge style={{ ...styles.badge, background: "#FF5D3A" }}>
             Workshop
           </Badge>
         );
       case "Přednášky":
         return (
-          <Badge style={{ ...styles.badge, background: "blue" }}>
+          <Badge style={{ ...styles.badge, background: "#1FAAAA" }}>
             Přednáška
           </Badge>
         );
       case "Duchovní":
         return (
           <Badge
-            style={{ ...styles.badge, background: "yellow", color: "black" }}
+            style={{ ...styles.badge, background: "#FFC700", color: "black" }}
           >
             Duchovní
           </Badge>
@@ -119,7 +120,7 @@ function BlockEvent({ event, key }) {
       <Card.Body>
         {customBadge(event.section)}
         {badgeByTime(event.timeStart, event.timeEnd)}
-        <Card.Title> {cropTitle(event.nameOfEvent)} </Card.Title>
+        <Card.Title style={styles.title}> {cropTitle(event.nameOfEvent)} </Card.Title>
 
         <Row>
           <Col sm>{event.speaker}</Col>
@@ -145,6 +146,9 @@ const styles = {
   badge: {
     marginBottom: 5,
   },
+  title: {
+    fontFamily: 'Hammersmith One, sans-serif',
+  }
 };
 
 export default BlockEvent;

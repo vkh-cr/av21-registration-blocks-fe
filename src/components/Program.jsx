@@ -25,7 +25,7 @@ function Program({ blockEvents }) {
               style={{ marginBottom: 40, marginLeft: 5, marginRight: 5 }}
             >
               <Card.Body>
-                <Card.Title>BLOK od {time}</Card.Title>
+                <Card.Title style={styles.title}>BLOK od {time}</Card.Title>
 
                 {blockEvents
                   .filter((item) => item.timeStart === time)
@@ -50,4 +50,9 @@ const styles = {
     justifyContent: "center",
     minHeight: 200,
   },
+  title: {
+    fontFamily: 'Russo One, sans-serif',
+    fontSize: 35,
+    color: "#ff5d3a"
+  }
 };
